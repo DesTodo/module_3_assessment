@@ -30,6 +30,6 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def set_item
-    @item = Item.find(params[:id]) #for methods that act on a specific instance id sent in params
+    @item = Item.find(params[:id])
   end
 end
