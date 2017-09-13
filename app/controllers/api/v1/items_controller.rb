@@ -11,8 +11,7 @@ class Api::V1::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    if @item.save render json: @item
-    end
+    render json: @item if @item.save
   end
 
   def destroy

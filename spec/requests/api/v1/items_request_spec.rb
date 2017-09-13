@@ -17,10 +17,9 @@ describe "Items API" do
     expect(raw_items.count).to eq(4)
     # And each item has an id, name, description, and image_url but not the created_at or updated_at
     expect(raw_item[:name]).to eq("Best Item")
+    expect(raw_item[:description]).to_not eq(nil)
     expect(raw_item[:created_at]).to eq(nil)
-
-    expect(page).to_not have_content(raw_item[:created_at])
-    expect(page).to_not have_content(raw_item[:updated_at])
+    expect(raw_item[:updated_at]).to eq(nil)
   end
 
   it "can return one specific item" do
