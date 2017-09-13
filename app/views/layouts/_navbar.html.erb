@@ -21,4 +21,10 @@
       </li>
     </ul>
   </div>
+  <div class="store-search">
+    <%= form_tag(search_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :q, params[:q], placeholder: "Find Stores" %>
+    <%= submit_tag "Search", :name => nil %>
+    <% end %>
+  </div>
 </nav>

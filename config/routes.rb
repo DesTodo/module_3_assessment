@@ -13,4 +13,6 @@ Rails.application.routes.draw do
       delete "items/:id", to: "items#destroy"
     end
   end
+
+  get "/search", to: "search#index"
 end
