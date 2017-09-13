@@ -15,8 +15,8 @@ class BestbuyService
     get_url(base)
   end
 
-  def get_url(url_details)
-    response = Faraday.get(base)
+  def get_url(url)
+    response = Faraday.get(url)
     parsed_response = JSON.parse(response.body, symbolize_names: true)
     parsed_response[:stores]
   end

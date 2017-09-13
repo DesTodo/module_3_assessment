@@ -1,7 +1,7 @@
 class SearchController < ApplicationController
 
   def index
-    zip = params[:zip]
-    @stations = BestbuyService.find_all_stores(zip)
+    zip = params[:q]
+    @stores = Store.find_all(zip)
   end
 end
