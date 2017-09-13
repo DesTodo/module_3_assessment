@@ -15,7 +15,7 @@ describe BestbuyService do
       expect(raw_store).to have_key(:longName)
       expect(raw_store[:longName]).to be_a(String)
       expect(raw_store).to have_key(:distance)
-      expect(raw_store[:distance]).to be_a(Decimal)
+      expect(raw_store[:distance]).to be_a(Float)
       expect(raw_store).to have_key(:phone)
       expect(raw_store[:phone]).to be_a(String)
       expect(raw_store).to have_key(:storeType)

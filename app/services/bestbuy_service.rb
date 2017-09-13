@@ -4,7 +4,7 @@ class BestbuyService
   def initialize(zip)
     @zip  = zip
     @key  = ENV["api_key"]
-    @base = "https://api.bestbuy.com/v1/stores(area(#{zip},25))?format=json&show=storeType,longName,phone,city,distance&pageSize=60&apiKey=#{key})"
+    @base = "https://api.bestbuy.com/v1/stores(area(#{zip},25))?format=json&show=storeType,longName,phone,city,distance&pageSize=60&apiKey=#{key}"
   end
 
   def self.find_all_stores(zip)
