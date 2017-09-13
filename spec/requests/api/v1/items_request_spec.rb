@@ -1,9 +1,9 @@
 require "rails_helper"
 
-desribe "Items API" do
+describe "Items API" do
   it "can return all items" do
     item = create(:item, name: "Best Item", description: "Best Item Description", image_url: "Image URL")
-    list = create(:item, 3) #model objects
+    list = create_list(:item, 3) #model objects
     expect(Item.count).to eq(4)
 
     get "/api/v1/items"
@@ -58,7 +58,7 @@ desribe "Items API" do
   end
 
   it "can send request to create item" do
-    list = create(:item, 3)
+    list = create_list(:item, 3)
     expect(Item.count).to eq(3)
     # When I send a POST request to `/api/v1/items`
     # item_params in controller : with a name, description, and image_url
