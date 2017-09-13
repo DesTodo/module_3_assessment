@@ -10,12 +10,17 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-    render json: @item if @item.save
+      render json: {
+        item: Item.create(item_params),
+        status: 201
+      }, status: 201
   end
 
   def destroy
     @item.destroy
+    render json: {
+      status: 204
+    }, status: 204
   end
 
   private

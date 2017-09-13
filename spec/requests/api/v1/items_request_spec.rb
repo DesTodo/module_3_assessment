@@ -51,8 +51,6 @@ describe "Items API" do
     expect(response.status).to eq(204)
     ## I receive a 204 JSON response if the record is successfully deleted
     # pass in method
-    raw_item = JSON.parse(response.body, symbolize_names: true)
-
     expect(Item.count).to eq(0)
   end
 
@@ -61,22 +59,18 @@ describe "Items API" do
     expect(Item.count).to eq(3)
     # When I send a POST request to `/api/v1/items`
     # item_params in controller : with a name, description, and image_url
-    post "/api/v1/items?name=NewItem&description=NewDescription&image_url=NewImageUrl"
+    post "/api/v1/items?name=MyItem&description=NewDescription&image_url=NewImageUrl"
     expect(response).to be_success
     # I receive a 201 JSON  response if the record is successfully created
     expect(response.status).to eq(201)
 
-    new_item = JSON.parse(response.body, sumbolize_names: true)
+    new_item = JSON.parse(response.body, symbolize_names: true)[:item]
 
     expect(Item.count).to eq(4)
     expect(Item.last.name).to eq(new_item[:name])
-    expect(page).to have_content('NewItem')
     expect(Item.last.description).to eq(new_item[:description])
-    expect(page).to have_content('NewDescription')
     expect(Item.last.image_url).to eq(new_item[:image_url])
-    expect(page).to have_content('NewImageUrl')
-    expect(new_item[:created_at]).to be(nil)
-    expect(new_item[:name]).to be_truthy
+    expect(new_item[:created_at]).to be_truthy
   end
 end
 # * Verify that your non-GET requests work using Postman or curl. (Hint: `ActionController::API`). Why doesn't the default `ApplicationController` support POST and PUT requests?
